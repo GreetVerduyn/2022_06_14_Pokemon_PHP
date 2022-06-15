@@ -58,9 +58,16 @@ but gives you more an overview of best practices and how different components wo
 - [x] make new repo
 - [x] copy all files from pokédex
 - [x] make index.html an index.php
-- [] make a new input field and searchbutton
+- [x] make a new input field and searchbutton
 - geen idee hoe dit verder moet. Google al heel veel geraadpleegd,
 maar niet veel bruikbaar gevonden
+- [] "fetch" : just take the html, decode Json and treat it as an array
+veel uitleg gevraagd tot ik alle nodige info had
+Nu nog lay-out
+- [x] header in separate file.php and include_once
+- [x] create pokemon in separate file.php and include_once
+
+
 
 - [] change fetch data (function (await fetch url, await respons))
 - const getData = async () => {

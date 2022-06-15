@@ -4,21 +4,21 @@ const pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
 //echo file_get_contents(pokeUrl);
 
 if (isset($_POST['pokemon'])) {
-
+include_once "template_pokemon.php";
     // Get input field value
     $pokemon = $_REQUEST['pokemon'];
     $pokeInfo = file_get_contents(pokeUrl . $pokemon);
     $pokemonData = json_decode($pokeInfo, true);
-    $name = ($pokemonData["name"]);
-    $id = ($pokemonData["id"]);
-    $image = ($pokemonData["sprites"]["front_default"]);
+    $name = ($pokemonData['name']);
+    $id = ($pokemonData['id']);
+    $image = ($pokemonData['sprites']['front_default']);
     $imageData = base64_encode(file_get_contents($image));
 
-    $moves = ($pokemonData["moves"]);
+    $moves = ($pokemonData['moves']);
     $moves4 = [];
     for ($i = 0; $i<=count($moves)&&$i<4; $i++) {
     array_push($moves4,$moves[$i]['move']);
-    print_r($moves4[$i]['name']);
+   // print_r($moves4[$i]['name']);
     }
 
 
@@ -36,19 +36,19 @@ renderPokemons($name,$id, $image, $moves4);
     //var_dump($moves[0]->name);
 }
 
-function renderPokemons($name, $id, $image, $moves4) {
-    echo "<div>
-        <div class=picture>
-            <div class='pokemonName'>$name</div>
-            <div><img src=" . $image . " class='pokemonImage'></div>
-        </div>
-        <div class='idPokemon'>$id</div>?>
-   </div>
-    <div>
-    
-</div>";
-   }
 //var_dump($_POST);
+if (isset($_POST['evolution'])) {
+include_once "template_pokemon.php";
+// Get input field value
+$pokemon = $_REQUEST['pokemon'];
+$pokeInfo = file_get_contents(pokeUrl . $pokemon);
+$pokemonData = json_decode($pokeInfo, true);
+//$name = ($pokemonData['name']);
+$evolutions = ($pokemonData['evolution_chain']);
+echo($evolutions);
+//$image = ($pokemonData['sprites']['front_default']);
+//$imageData = base64_encode(file_get_contents($image));
+}
 ?>
 
 
@@ -60,29 +60,12 @@ function renderPokemons($name, $id, $image, $moves4) {
     <title>Pokedex</title>
 </head>
 <body>
-<!--<div class="top">
-    <div class="top-left">
-        <p class="textSearchButton"> Enter the name or the Pokédex-number of the Pokémon you're looking for</p>
-        <div>
-            <form method="post" action="index.php">
-                <input type="text" name="pokemon">
-                <input type="submit" value="search">
-            </form>
-        </div>
-    </div>
-    <div class="top-right">
-        <img id=logo src="images/logo-pokemon.png" alt="Pokémon">
-    </div>
-</div>
--->
 
+<!--
 <form method="get" action="index.php">
     <input type="submit" value="search evolution">
 </form>
-
-<?php
-
-?>
+-->
 
 <!--ORIGINEEL-->
 <div class="top">
