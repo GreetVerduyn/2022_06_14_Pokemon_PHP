@@ -1,5 +1,5 @@
 <?php
-
+include_once "header.php";
 const pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
 //echo file_get_contents(pokeUrl);
 
@@ -60,7 +60,7 @@ function renderPokemons($name, $id, $image, $moves4) {
     <title>Pokedex</title>
 </head>
 <body>
-<div class="top">
+<!--<div class="top">
     <div class="top-left">
         <p class="textSearchButton"> Enter the name or the Pokédex-number of the Pokémon you're looking for</p>
         <div>
@@ -74,7 +74,7 @@ function renderPokemons($name, $id, $image, $moves4) {
         <img id=logo src="images/logo-pokemon.png" alt="Pokémon">
     </div>
 </div>
-
+-->
 
 <form method="get" action="index.php">
     <input type="submit" value="search evolution">
