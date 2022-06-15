@@ -43,6 +43,7 @@ input {
   background-color: lightblue;
   margin: 20px;
   border-radius: 25px;
+  width: 300px;
 }
 .picture .pokemonImage {
   height: 300px;

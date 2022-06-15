@@ -15,27 +15,39 @@ if (isset($_POST['pokemon'])) {
     $imageData = base64_encode(file_get_contents($image));
 
     $moves = ($pokemonData["moves"]);
-    $moves4='';
-    for ($i = 0; $i<count($moves)&&$i<4; $i++) {
-
-    array_push($moves4,$moves[$i]["move"]);
-    print_r($moves4[$i]["name"]);
-
-
+    $moves4 = [];
+    for ($i = 0; $i<=count($moves)&&$i<4; $i++) {
+    array_push($moves4,$moves[$i]['move']);
+    print_r($moves4[$i]['name']);
     }
 
 
-    echo $name;
-    echo $id;
-    print_r($moves[0]['move']['name']);
-    print_r($moves[1]['move']['name']);
-    print_r("<img src=" . $image . ">");
-    echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
+    //echo $name;
+    //echo $id;
+   // print_r($moves[0]['move']['name']);
+    //print_r($moves[1]['move']['name']);
+    //print_r("<img src=" . $image . ">");
+    //echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
+renderPokemons($name,$id, $image, $moves4);
+
 
 
     //var_dump($moves[0]);
     //var_dump($moves[0]->name);
 }
+
+function renderPokemons($name, $id, $image, $moves4) {
+    echo "<div>
+        <div class=picture>
+            <div class='pokemonName'>$name</div>
+            <div><img src=" . $image . " class='pokemonImage'></div>
+        </div>
+        <div class='idPokemon'>$id</div>?>
+   </div>
+    <div>
+    
+</div>";
+   }
 //var_dump($_POST);
 ?>
 
