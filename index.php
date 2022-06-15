@@ -1,15 +1,42 @@
 <?php
 
-CONST pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
+const pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
 //echo file_get_contents(pokeUrl);
 
-if ( isset( $_POST['pokemon'] ) ) {
+if (isset($_POST['pokemon'])) {
 
     // Get input field value
     $pokemon = $_REQUEST['pokemon'];
-    $pokeInfo = file_get_contents(pokeUrl.$pokemon);
+    $pokeInfo = file_get_contents(pokeUrl . $pokemon);
+    $pokemonData = json_decode($pokeInfo, true);
+    $name = ($pokemonData["name"]);
+    $id = ($pokemonData["id"]);
+    $image = ($pokemonData["sprites"]["front_default"]);
+    $imageData = base64_encode(file_get_contents($image));
+
+    $moves = ($pokemonData["moves"]);
+    $moves4='';
+    for ($i = 0; $i<count($moves)&&$i<4; $i++) {
+
+    array_push($moves4,$moves[$i]["move"]);
+    print_r($moves4[$i]["name"]);
+
+
+    }
+
+
+    echo $name;
+    echo $id;
+    print_r($moves[0]['move']['name']);
+    print_r($moves[1]['move']['name']);
+    print_r("<img src=" . $image . ">");
+    echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
+
+
+    //var_dump($moves[0]);
+    //var_dump($moves[0]->name);
 }
-var_dump($_POST);
+//var_dump($_POST);
 ?>
 
 
@@ -38,11 +65,11 @@ var_dump($_POST);
 
 
 <form method="get" action="index.php">
-        <input type="submit" value="search evolution">
+    <input type="submit" value="search evolution">
 </form>
 
 <?php
-echo $pokeInfo
+
 ?>
 
 <!--ORIGINEEL-->
@@ -67,10 +94,10 @@ echo $pokeInfo
     </div>
     <div class="pokemonEvo">
         <!--Evolution-->
-       <div class="topEvolutions">
-           <button onclick="searchEvolutions()" id="searchEvolutions">search evolution</button>
-           <p class= "textEvolutions" id="textEvolutions">Evolutions</p>
-       </div>
+        <div class="topEvolutions">
+            <button onclick="searchEvolutions()" id="searchEvolutions">search evolution</button>
+            <p class="textEvolutions" id="textEvolutions">Evolutions</p>
+        </div>
         <div class="evolutions" id="evolutions">
             <div class="evolution" id="evolution1"></div>
             <div class="evolution" id="evolution2"></div>
