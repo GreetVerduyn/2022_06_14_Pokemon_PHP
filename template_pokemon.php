@@ -32,11 +32,10 @@ Moves: $moves4
     <div class='pokemonEvo'>
         <!--Evolution-->
         <div class='topEvolutions'>
-            <form method='get' action='index.php' name="evolution">
-                <input type='submit' value='search evolution'>
+            <form method="post">
+                <input type='submit' name='evolution' value='search evolution'>
             </form>
-
-            <p class='textEvolutions' id='textEvolutions'>Evolutions</p>
+           <!-- <p class='textEvolutions' id='textEvolutions'>Evolutions</p>-->
         </div>
         <div class='evolutions' id='evolutions'>
             <div class='evolution' id='evolution1'></div>

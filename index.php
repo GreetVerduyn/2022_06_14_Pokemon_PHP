@@ -69,7 +69,7 @@ if (isset($_POST['evolution'])) {
 </form>
 -->
 
-<!--ORIGINEEL-->
+ORIGINEEL
 <div class="top">
     <div class="top-left">
         <p class="textSearchButton"> Enter the name or the Pokédex-number of the Pokémon you're looking for</p>
