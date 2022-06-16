@@ -4,7 +4,7 @@ const pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
 //echo file_get_contents(pokeUrl);
 
 if (isset($_POST['pokemon'])) {
-include_once "template_pokemon.php";
+    include_once "template_pokemon.php";
     // Get input field value
     $pokemon = $_REQUEST['pokemon'];
     $pokeInfo = file_get_contents(pokeUrl . $pokemon);
@@ -15,41 +15,43 @@ include_once "template_pokemon.php";
     $imageData = base64_encode(file_get_contents($image));
 
     $moves = ($pokemonData['moves']);
-    $moves4 = [];
-    for ($i = 0; $i<=count($moves)&&$i<4; $i++) {
-    array_push($moves4,$moves[$i]['move']);
-   // print_r($moves4[$i]['name']);
+    $moves4=[];
+    for ($i = 0; $i<4; $i++) {
+        //echo $moves[$i]['move']['name'];
+    array_push($moves4,$moves[$i]['move']['name']);
     }
+    $movestr = implode(" ",$moves4);
 
-
-    //echo $name;
-    //echo $id;
-   // print_r($moves[0]['move']['name']);
-    //print_r($moves[1]['move']['name']);
-    //print_r("<img src=" . $image . ">");
-    //echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
-renderPokemons($name,$id, $image, $moves4);
-
-
-
+renderPokemons($name,$id, $image, $movestr);
     //var_dump($moves[0]);
     //var_dump($moves[0]->name);
 }
 
-//var_dump($_POST);
+
+
 if (isset($_POST['evolution'])) {
-include_once "template_pokemon.php";
+    echo "Hello";
+//include_once "template_evolutions.php";
 // Get input field value
-$pokemon = $_REQUEST['pokemon'];
-$pokeInfo = file_get_contents(pokeUrl . $pokemon);
-$pokemonData = json_decode($pokeInfo, true);
+//$pokemon = $_REQUEST['pokemon'];
+//$pokeInfo = file_get_contents(pokeUrl . $pokemon);
+//$pokemonData = json_decode($pokeInfo, true);
 //$name = ($pokemonData['name']);
-$evolutions = ($pokemonData['evolution_chain']);
-echo($evolutions);
+//$evolutions = ($pokemonData['evolution_chain']);
+//echo($evolutions);
 //$image = ($pokemonData['sprites']['front_default']);
 //$imageData = base64_encode(file_get_contents($image));
 }
 ?>
+
+
+
+
+
+
+
+
+
 
 
 <!DOCTYPE html>

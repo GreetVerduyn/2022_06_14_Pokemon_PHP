@@ -65,6 +65,7 @@ input {
   border-radius: 25px;
   font-size: 20px;
   margin: 30px;
+  width: 300px;
 }
 .pokemonMoves .textMoves {
   font-size: 30px;
